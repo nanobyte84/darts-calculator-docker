@@ -1,6 +1,37 @@
 <?php
 require_once('include/php/session.php');
+require_once('include/php/dbconfig.php'); 
 
+// Function to check if the table exists
+function tableExists($pdo, $table) {
+    try {
+        $result = $pdo->query("SELECT 1 FROM $table LIMIT 1");
+    } catch (Exception $e) {
+        return FALSE;
+    }
+    return $result !== FALSE;
+}
+
+// Create a PDO instance for database connection
+$pdo = new PDO("mysql:host=".DBHOST.";charset=utf8mb4;dbname=".DBNAME, DBUSER, DBPASS);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+// Specify your SQL file
+$sqlFile = 'monitoring.sql';
+
+// Check if the tables exist (you might need to modify this depending on your schema)
+if (!tableExists($pdo, 'YOUR_FIRST_TABLE_NAME')) {
+    // Read SQL from the file
+    $sql = file_get_contents($sqlFile);
+    
+    // Execute SQL statements
+    try {
+        $pdo->exec($sql);
+        //echo "Database initialized.";
+    } catch (PDOException $e) {
+        die("DB ERROR: ". $e->getMessage());
+    }
+}
 /*
 //Load Cookie if exist
 $cookie_name = "GameSettings";
