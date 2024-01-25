@@ -12,10 +12,22 @@ body {
 
 .darkbody {
     background-color: #353c43;
+    color: #ffffff;
 }
 
 .lightbody {
     background-color: #fff;
+    color: #212529;
+}
+
+.lightbody .list-group-item {
+    background-color: #f8f9fa; /* Light grey */
+    color: #212529; /* Dark text */
+}
+
+.darkbody .list-group-item {
+    background-color: #212529; /* Light grey */
+    color: #f8f9fa; /* Dark text */
 }
 
 .container-full {

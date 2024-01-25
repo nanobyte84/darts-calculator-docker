@@ -84,10 +84,15 @@ if(isset($_COOKIE[$cookie_name])) {
     <link href="./include/css/main.css" rel="stylesheet">
 
   </head>
-  <body class="lightbody">
+  <body class="darkbody">
 
     <div class="container" style="margin-top:20px;">
     <div class="row">
+
+        <div class="dark-mode-toggle">
+            <i id="darkModeToggle" class="fa-duotone fa-moon" onclick="toggleDarkMode()"></i>
+        </div>
+
 
         <div class="col-md-6">
           <h2>Spielmodus</h2>
@@ -269,6 +274,25 @@ if(isset($_COOKIE[$cookie_name])) {
 </div>
 
 <!-- JS Librarys at the end -->
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle('darkbody');
+    document.body.classList.toggle('lightbody');
+    // Save the user's preference in localStorage
+    localStorage.setItem('darkMode', document.body.classList.contains('darkbody'));
+  }
+
+  // Check for saved user preference, if any, on page load
+  window.onload = function() {
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('darkbody');
+      document.body.classList.remove('lightbody');
+    }
+  };
+</script>
+
+
 <script type="text/javascript" src="include/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="include/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="include/js/fontawesome6.all.min.js"></script>
@@ -279,6 +303,6 @@ if(isset($_COOKIE[$cookie_name])) {
 
 <script type="text/javascript" src="include/js/functions.js"></script>
 <script type="text/javascript" src="include/js/index.js"></script>
-
+  
 </body>
 </html>
