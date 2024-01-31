@@ -16,6 +16,7 @@ body {
 }
 
 .list-group-horizontal,.list-group-item{
+    background-color: #212529;
     border-radius: 0 !important;
 }
 

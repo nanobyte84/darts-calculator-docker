@@ -43,23 +43,21 @@ $version = "1.0.6";
 <div class="container-full">
 
   <div class="row">
-
-  <div class="col-12 col-md-11 col-lg-5 col-xl-6 leftinformationtable">
-    <ul id="playerlist" class="playerlist"> </ul>
-  </div>
-
-  <div class="col-12 col-md-1 col-lg-1 col-xl-1 darts" style="margin-left:-0.5rem;">
-    <img id="dart1" src="include/img/dart-icon-white.png"></img>
-    <img id="dart2" src="include/img/dart-icon-white.png"></img>
-    <img id="dart3" src="include/img/dart-icon-white.png"></img>
-  </div>
-
     <div class="col-12 col-md-12 col-lg-6 col-xl-5">
       
       <div class="col-12" id="numberblock">
       <ul class="list-group list-group-horizontal list-inline">
         <!--<li class="list-group-item flex-fill" style="padding-top:15px"><h3><i class="fa-duotone fa-bullseye-arrow"></i> Eingabe</h3></li>-->
-        <li class="list-group-item flex-fill"><button id="undomove" type="button" class="btn btn-primary" style="margin-top:5px; margin-right:15px; float:left;"><i class="fa-duotone fa-clock-rotate-left fa-lg"></i> UNDO</button><button id="showstats" type="button" class="btn btn-primary" style="margin-top:5px; margin-right:15px; float:center;"><i class="fa-duotone fa-chart-line fa-lg"></i> Statistiken</button><button id="showinfos" type="button" class="btn btn-primary" style="margin-top:5px; margin-right:15px; float:center;"><i class="fa-duotone fa-circle-info fa-lg"></i> Infos</button><button id="quitgame" type="button" class="btn btn-primary" style="margin-top:5px; float:right;"><i class="fa-duotone fa-right-from-bracket fa-lg"></i> Beenden</button></li>
+        <li class="list-group-item flex-fill">
+          <button id="showstats" type="button" class="btn btn-primary" style="margin-top:5px; margin-right:10px; float:center;">
+            <i class="fa-duotone fa-chart-line fa-lg"></i> Statistiken</button>
+          <button id="showinfos" type="button" class="btn btn-primary" style="margin-top:5px; margin-right:10px; float:center;">
+            <i class="fa-duotone fa-circle-info fa-lg"></i> Infos</button>
+          <button id="togglefullscreen" type="button" class="btn btn-primary" style="margin-top:5px; margin-right:10px; float:center;">
+            <i class="fa-duotone fa-expand fa-lg"></i> Vollbild</button>
+          <button id="quitgame" type="button" class="btn btn-primary" style="margin-top:5px; float:right;">
+            <i class="fa-duotone fa-right-from-bracket fa-lg"></i> Beenden</button>
+        </li>
       </ul>
 
       <?php
@@ -111,9 +109,10 @@ $version = "1.0.6";
       echo '</ul>
       <ul class="list-group list-group-horizontal col-12">
         <li class="list-group-item col-12 text-center">
-          <button type="button" class="btn btn-default addpoints btn-addpoints-margin col-12 col-sm-3" data-value="MISS">MISS</button>
-          <button type="button" class="btn btn-success addpoints btn-addpoints-margin col-12 col-sm-3" data-value="SB">SingleBull</button>
-          <button type="button" class="btn btn-danger addpoints btn-addpoints-margin col-12 col-sm-3" data-value="DB">BullsEye</button>			
+          <button type="button" class="btn btn-default addpoints btn-addpoints-margin col-12 col-sm-3" style="width:24%;" data-value="MISS">MISS</button>
+          <button type="button" class="btn btn-success addpoints btn-addpoints-margin col-12 col-sm-3" style="width:24%;" data-value="SB">SingleBull</button>
+          <button type="button" class="btn btn-danger addpoints btn-addpoints-margin col-12 col-sm-3" style="width:24%;" data-value="DB">BullsEye</button>
+          <button id="undomove" type="button" class="btn btn-warning btn-addpoints-margin  col-12 col-sm-3" style="width:24%; padding:8px;" ><i class="fa-duotone fa-clock-rotate-left fa-lg"></i> UNDO</button>
         </li>
       </ul>';?>
 
@@ -124,6 +123,17 @@ $version = "1.0.6";
 
 
     </div>
+  <div class="col-12 col-md-11 col-lg-5 col-xl-6 leftinformationtable">
+    <ul id="playerlist" class="playerlist"> </ul>
+  </div>
+
+  <div class="col-12 col-md-1 col-lg-1 col-xl-1 darts" style="margin-left:-0.5rem;">
+    <img id="dart1" src="include/img/dart-icon-white.png"></img>
+    <img id="dart2" src="include/img/dart-icon-white.png"></img>
+    <img id="dart3" src="include/img/dart-icon-white.png"></img>
+  </div>
+
+
   </div>
 
   <!---Modal -->

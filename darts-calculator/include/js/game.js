@@ -2153,3 +2153,34 @@ $('#modal-footer').on("click", '#confirmExitGame', function(e){
 
     setTimeout(function(){ window.location.href = "./index.php"; }, 300);
 });
+
+
+$('#togglefullscreen').click(function() {
+  if(document.fullscreenElement){
+    Logger("Aktuell Fullscreen, diesen nun verlassen");
+    closeFullscreen(document.documentElement);
+  }else{
+    Logger("Aktuell kein Fullscreen, diesen nun starten");
+    openFullscreen(document.documentElement);
+  };
+});
+
+function openFullscreen(elem) {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen(elem) {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}
