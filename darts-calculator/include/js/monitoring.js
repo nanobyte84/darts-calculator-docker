@@ -42,14 +42,14 @@ $('#togglefullscreen').click(function() {
     Logger("Aktuell Fullscreen, diesen nun verlassen");
     //$(this).attr('data-currentMode', 'compressed'); 
     closeFullscreen(document.documentElement);
-    $(this).html('<i class="fa-duotone fa-expand fa-lg" aria-hidden="true"></i> Vollbildmodus');
+    //$(this).html('<i class="fa-duotone fa-expand fa-lg" aria-hidden="true"></i> Vollbildmodus');
 
 
   }else{
     Logger("Aktuell kein Fullscreen, diesen nun starten");
     //$(this).attr('data-currentMode', 'enlarged'); 
     openFullscreen(document.documentElement);
-    $(this).html('<i class="fa-duotone fa-compress fa-lg" aria-hidden="true"></i> Vollbildmodus verlassen');
+    //$(this).html('<i class="fa-duotone fa-compress fa-lg" aria-hidden="true"></i> Vollbildmodus verlassen');
   };
 
 });
@@ -513,7 +513,63 @@ function DisplayUpdate(gameData){
         }
 
         //insertLIString += "LOL";
-        insertLIString += '<li id="listelement-' +x+'" class="sidebar-table-players"><div class="col-md-12 col-xs-12 playername" id="playername-' +x+'" '+playerDIVBorderColor+'><div class="row"><div class="col-md-7 col-xs-7 playernamefield"><div class="row"><div class="col-md-12 col-xs-12"><p id="playernamefield-' +x+'" '+playerColor+'>' +playerData[x]['PlayerName'] + '</p></div></div><div class="row"><div class="col-md-12 col-xs-12 checkouthint"><p id="checkouthint-' +x+'">'+playerData[x]['PlayerCheckouthint']+'</p></div></div><div class="row"><div class="col-md-12 col-xs-12 checkouthint2"><p id="checkouthint2-' +x+'">'+playerData[x]['PlayerCheckouthint2']+'</p></div></div></div><div class="col-md-5 col-xs-5 pointstocheck"><p class="pointstochecktext" id="pointstocheck-' +x+'">' + playerData[x]['PlayerScore'] + '</p></div></div><div class="row actual-throw"><div class="col-md-4 col-xs-4" id="throw-one-' +x+'">'+playerData[x]['Player-Throw-One']+'</div><div class="col-md-4 col-xs-4" id="throw-two-' +x+'">'+playerData[x]['Player-Throw-Two']+'</div><div class="col-md-4 col-xs-4" id="throw-three-' +x+'">'+playerData[x]['Player-Throw-Three']+'</div></div><div class="row no-score"><div class="col-md-4 col-xs-4" id="no-score-one-' +x+'">'+playerData[x]['Player-No-Score-One']+'</div><div class="col-md-4 col-xs-4" id="no-score-two-' +x+'">'+playerData[x]['Player-No-Score-Two']+'</div><div class="col-md-4" id="no-score-three-' +x+'">'+playerData[x]['Player-No-Score-Three']+'</div></div><div class="row statistics"><div class="col-md-4 col-xs-4 three-darts-avg" id="three-darts-avg-' +x+'">'+playerData[x]['Player-Three-Darts-Avg']+'</div><div class="col-md-4 col-xs-4 highest-score" id="highest-score-' +x+'">'+playerData[x]['Player-Highest-Score']+'</div><div class="col-md-4 col-xs-4 checkout-percentage" id="checkout-percentage-' +x+'">'+playerData[x]['Player-Checkout-Percentage']+'</div></div><div class="row latest-darts-throw"><div class="col-md-12 col-xs-12"><p class="latest-darts-throw" style="display: inline;" id="latest-darts-throw-score-' +x+'" >'+playerData[x]['Player-Latest-Darts-Throw-Score']+'</p></div></div><div class="row"><div class="col-md-12 col-xs-12 won-legs-indicator" id="won-legs-indicator-' +x+'">'+wonLegsString+'</div></div></li>';
+insertLIString += '<li id="listelement-' + x + '" class="sidebar-table-players">' +
+    '<div class="col-md-12 col-xs-12 playername" id="playername-' + x + '" ' + playerDIVBorderColor + '>' +
+        '<div class="row">' +
+            '<div class="col-md-7 col-xs-7 playernamefield" style="height: 50px;">' +
+                '<div class="row">' +
+                    '<div class="col-md-12 col-xs-12">' +
+                        '<p id="playernamefield-' + x + '" ' + playerColor + '>' + playerData[x]['PlayerName'] + '</p>' +
+                    '</div>' +
+                '</div>';
+
+if (x === 0) {
+    insertLIString += '<div class="row">' +
+                        '<div class="col-md-12 col-xs-12 checkouthint">' +
+                            '<p id="checkouthint-' + x + '">' + playerData[x]['PlayerCheckouthint'] + '</p>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="row">' +
+                        '<div class="col-md-12 col-xs-12 checkouthint2">' +
+                            '<p id="checkouthint2-' + x + '">' + playerData[x]['PlayerCheckouthint2'] + '</p>' +
+                        '</div>' +
+                    '</div>';
+}
+
+insertLIString += '</div><div class="col-md-5 col-xs-5 pointstocheck" style="height: 50px;">' +
+                      '<p class="pointstochecktext" id="pointstocheck-' + x + '">' + playerData[x]['PlayerScore'] + '</p>' +
+                  '</div>' +
+              '</div>';
+
+if (x === 0) {
+    insertLIString += '<div class="row actual-throw">' +
+                        '<div class="col-md-4 col-xs-4" id="throw-one-' + x + '">' + playerData[x]['Player-Throw-One'] + '</div>' +
+                        '<div class="col-md-4 col-xs-4" id="throw-two-' + x + '">' + playerData[x]['Player-Throw-Two'] + '</div>' +
+                        '<div class="col-md-4 col-xs-4" id="throw-three-' + x + '">' + playerData[x]['Player-Throw-Three'] + '</div>' +
+                    '</div>';
+}
+
+insertLIString += '<div class="row no-score">' +
+                    '<div class="col-md-4 col-xs-4" id="no-score-one-' + x + '">' + playerData[x]['Player-No-Score-One'] + '</div>' +
+                    '<div class="col-md-4 col-xs-4" id="no-score-two-' + x + '">' + playerData[x]['Player-No-Score-Two'] + '</div>' +
+                    '<div class="col-md-4" id="no-score-three-' + x + '">' + playerData[x]['Player-No-Score-Three'] + '</div>' +
+                '</div>' +
+                '<div class="row statistics">' +
+                    '<div class="col-md-4 col-xs-4 three-darts-avg" id="three-darts-avg-' + x + '">' + playerData[x]['Player-Three-Darts-Avg'] + '</div>' +
+                    '<div class="col-md-4 col-xs-4 highest-score" id="highest-score-' + x + '">' + playerData[x]['Player-Highest-Score'] + '</div>' +
+                    '<div class="col-md-4 col-xs-4 checkout-percentage" id="checkout-percentage-' + x + '">' + playerData[x]['Player-Checkout-Percentage'] + '</div>' +
+                '</div>' +
+                '<div class="row latest-darts-throw">' +
+                    '<div class="col-md-12 col-xs-12">' +
+                        '<p class="latest-darts-throw" style="display: inline;" id="latest-darts-throw-score-' + x + '" >' + playerData[x]['Player-Latest-Darts-Throw-Score'] + '</p>' +
+                    '</div>' +
+                '</div>' +
+                '<div class="row">' +
+                    '<div class="col-md-12 col-xs-12 won-legs-indicator" id="won-legs-indicator-' + x + '">' + wonLegsString + '</div>' +
+                '</div>' +
+            '</div>' +
+        '</li>';
+
     }
 
     $('#playerlist').html(insertLIString);

@@ -90,11 +90,68 @@ if($gameData != ""){
         $wonLegsString = "";
         for($y = 0; $y < intval($playerData[$x]['Player-WonLegs']); $y++){
           $wonLegsString .= '<i class="fa-solid fa-circle"></i>';
-          //$wonLegsString .= '<svg aria-hidden="true" focusable="false" data-prefix="fa-solid" data-icon="circle" class="svg-inline--fa fa-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M496 256C496 389 389 496 256 496S16 389 16 256S123 16 256 16S496 123 496 256Z" fill="currentColor"/></svg>';
         }
 
-        //$insertLIString .= "LOL";
-        $insertLIString .= '<li id="listelement-' . $x . '" class="sidebar-table-players"><div class="col-md-12 col-xs-12 playername" id="playername-' . $x . '" '.$playerDIVBorderColor.'><div class="row"><div class="col-md-7 col-xs-7 playernamefield"><div class="row"><div class="col-md-12 col-xs-12"><p id="playernamefield-' . $x . '" '.$playerColor.'>' . $playerData[$x]['PlayerName'] . '</p></div></div><div class="row"><div class="col-md-12 col-xs-12 checkouthint"><p id="checkouthint-' . $x . '">'.$playerData[$x]['PlayerCheckouthint'].'</p></div></div><div class="row"><div class="col-md-12 col-xs-12 checkouthint2"><p id="checkouthint2-' . $x . '">'.$playerData[$x]['PlayerCheckouthint2'].'</p></div></div></div><div class="col-md-5 col-xs-5 pointstocheck"><p class="pointstochecktext" id="pointstocheck-' . $x . '">' . $playerData[$x]['PlayerScore'] . '</p></div></div><div class="row actual-throw"><div class="col-md-4 col-xs-4" id="throw-one-' . $x . '">'.$playerData[$x]['Player-Throw-One'].'</div><div class="col-md-4 col-xs-4" id="throw-two-' . $x . '">'.$playerData[$x]['Player-Throw-Two'].'</div><div class="col-md-4 col-xs-4" id="throw-three-' . $x . '">'.$playerData[$x]['Player-Throw-Three'].'</div></div><div class="row no-score"><div class="col-md-4 col-xs-4" id="no-score-one-' . $x . '">'.$playerData[$x]['Player-No-Score-One'].'</div><div class="col-md-4 col-xs-4" id="no-score-two-' . $x . '">'.$playerData[$x]['Player-No-Score-Two'].'</div><div class="col-md-4" id="no-score-three-' . $x . '">'.$playerData[$x]['Player-No-Score-Three'].'</div></div><div class="row statistics"><div class="col-md-4 col-xs-4 three-darts-avg" id="three-darts-avg-' . $x . '">'.$playerData[$x]['Player-Three-Darts-Avg'].'</div><div class="col-md-4 col-xs-4 highest-score" id="highest-score-' . $x . '">'.$playerData[$x]['Player-Highest-Score'].'</div><div class="col-md-4 col-xs-4 checkout-percentage" id="checkout-percentage-' . $x . '">'.$playerData[$x]['Player-Checkout-Percentage'].'</div></div><div class="row latest-darts-throw"><div class="col-md-12 col-xs-12"><p class="latest-darts-throw" style="display: inline;" id="latest-darts-throw-score-' . $x . '" >'.$playerData[$x]['Player-Latest-Darts-Throw-Score'].'</p></div></div><div class="row"><div class="col-md-12 col-xs-12 won-legs-indicator" id="won-legs-indicator-' . $x . '">'.$wonLegsString.'</div></div></li>';
+        $insertLIString1 .= '<li id="listelement-' . $x . '" class="sidebar-table-players">
+    <div class="col-md-12 col-xs-12 playername" id="playername-' . $x . '" '.$playerDIVBorderColor.'>
+        <div class="row">
+            <div class="col-md-7 col-xs-7 playernamefield" style="height: 50px;">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <p id="playernamefield-' . $x . '" '.$playerColor.'>' . $playerData[$x]['PlayerName'] . '</p>
+                    </div>
+                </div>';
+                
+    if ($x === 0)  {
+          $insertLIString1 .=' <div class="row">
+                    <div class="col-md-12 col-xs-12 checkouthint">
+                        <p id="checkouthint-' . $x . '">'.$playerData[$x]['PlayerCheckouthint'].'</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 checkouthint2">
+                        <p id="checkouthint2-' . $x . '">'.$playerData[$x]['PlayerCheckouthint2'].'</p>
+                    </div>
+                </div>';
+    }
+                
+        $insertLIString1 .=' 
+          </div>
+          <div class="col-md-5 col-xs-5 pointstocheck" style="height: 50px;">
+              <p class="pointstochecktext" id="pointstocheck-' . $x . '">' . $playerData[$x]['PlayerScore'] . '</p>
+          </div>
+        </div>';
+                
+    if ($x === 0)  {
+          $insertLIString1 .='
+            <div class="row actual-throw">
+                <div class="col-md-4 col-xs-4" id="throw-one-' . $x . '">'.$playerData[$x]['Player-Throw-One'].'</div>
+                <div class="col-md-4 col-xs-4" id="throw-two-' . $x . '">'.$playerData[$x]['Player-Throw-Two'].'</div>
+                <div class="col-md-4 col-xs-4" id="throw-three-' . $x . '">'.$playerData[$x]['Player-Throw-Three'].'</div>
+            </div>';
+    }
+                
+        $insertLIString1 .='
+        <div class="row no-score">
+            <div class="col-md-4 col-xs-4" id="no-score-one-' . $x . '">'.$playerData[$x]['Player-No-Score-One'].'</div>
+            <div class="col-md-4 col-xs-4" id="no-score-two-' . $x . '">'.$playerData[$x]['Player-No-Score-Two'].'</div>
+            <div class="col-md-4" id="no-score-three-' . $x . '">'.$playerData[$x]['Player-No-Score-Three'].'</div>
+        </div>
+        <div class="row statistics">
+            <div class="col-md-4 col-xs-4 three-darts-avg" id="three-darts-avg-' . $x . '">'.$playerData[$x]['Player-Three-Darts-Avg'].'</div>
+            <div class="col-md-4 col-xs-4 highest-score" id="highest-score-' . $x . '">'.$playerData[$x]['Player-Highest-Score'].'</div>
+            <div class="col-md-4 col-xs-4 checkout-percentage" id="checkout-percentage-' . $x . '">'.$playerData[$x]['Player-Checkout-Percentage'].'</div>
+        </div>
+        <div class="row latest-darts-throw">
+            <div class="col-md-12 col-xs-12">
+                <p class="latest-darts-throw" style="display: inline;" id="latest-darts-throw-score-' . $x . '" >'.$playerData[$x]['Player-Latest-Darts-Throw-Score'].'</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xs-12 won-legs-indicator" id="won-legs-indicator-' . $x . '">'.$wonLegsString.'</div>
+        </div>
+    </div>
+</li>';
     }
 
 
@@ -137,71 +194,132 @@ if($gameData != ""){
     <link href="./include/css/game.css?v=<?php echo $version;?>" rel="stylesheet">
     <link href="./include/css/monitoring.css?v=<?php echo $version;?>" rel="stylesheet">
 
+    <style>
+      @media (min-width: 320px) {
+          /*Namebox Styles*/
+          .playernamefield p {
+              color: white;
+              font-family: 'Open Sans', sans-serif;
+              font-weight: 700;
+              font-size: 30px;
+              margin-left: 10px;
+          }
+          /*Current Points left to check*/
+          .pointstochecktext {
+              color: white;
+              font-family: 'Open Sans', sans-serif;
+              font-weight: 400;
+              font-size: 50px;
+              text-align: right;
+              margin-right: 10px;
+              float: right;
+              /*background-color: grey;*/
+          }
+          /*Fields throwed*/
+          .actual-throw {
+              color: white;
+              font-family: 'Open Sans', sans-serif;
+              font-weight: 700;
+              font-size: 30px;
+              text-align: center;
+              /*border: 3px solid black;*/
+          }
+          /*Privious Take Style*/
+          .latest-darts-throw {
+              text-align: left;
+          }
+          /*General Textstyle for all Elements in Table*/
+          .leftinformationtable {
+              color: white;
+              font-family: 'Open Sans', sans-serif;
+              font-weight: 400;
+              font-size: 12px;
+              /*background-color:#272c31;*/
+          }
+          /*Checkouthint*/
+          .checkouthint p {
+              font-size: 20px;
+          }
+          .checkouthint2 p {
+              font-size: 16px;
+          }
+          /*Darts Img*/
+          .darts {
+              padding: 0px;
+              margin-top: 30px;
+          }
+          .darts img {
+              height: 40px;
+              width: 40px;
+          }
+          .numberblock {
+              width: 100%;
+              height: 100%;
+              margin-top: 5vh;
+          }
+          .statistics {
+              /*background-color:blueviolet; */
+              padding-top: 5px;
+          }
+      }
+        @media screen and (orientation: landscape) {
+            .playerlist {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+        }
+    </style>
+
+
   </head>
   <body class="darkbody">
 
 <div class="container-full">
 
 
-<div class="row">
-
+<!-- <div class="row">
   <div class="col-12 col-md-4 col-lg-4" style="margin-top: 10px; margin-left: 10px;">
     <button id="togglefullscreen" type="button" data-currentMode="compressed" class="btn btn-primary" tabindex="1"><i class="fa-duotone fa-expand fa-lg" aria-hidden="true"></i> Vollbildmodus</button>
   </div>
-
   <div class="col-12 col-md-3 col-lg-2" style="margin-top: 10px;">
     <button id="showstats" type="button" class="btn btn-primary"><i class="fa-duotone fa-chart-line fa-lg"></i> Statistiken</button>
   </div>
-
-  <!--
-  <div class="col-12 col-md-5 col-lg-3" style="margin-top: 10px;">
-    <div id="fontsize" class="btn-group" role="group" style="background-color:#ffffff; border-radius:5px;">
-        <input type="radio" class="btn-check" name="fontsize" id="fontsize_small" autocomplete="off" value="small">
-            <label class="btn btn-outline-primary" for="fontsize_small">Klein</label>
-        <input type="radio" class="btn-check" name="fontsize" id="fontsize_medium" autocomplete="off" value="medium" checked>
-            <label class="btn btn-outline-primary" for="fontsize_medium">Mittel</label>
-        <input type="radio" class="btn-check" name="fontsize" id="fontsize_large" autocomplete="off" value="large">
-            <label class="btn btn-outline-primary" for="fontsize_large">Groß</label>
-    </div>
-    </div>
-  -->
-
   <div class="col-12 col-md-3 col-lg-4" style="margin-top: 10px;">
-    <!-- Custom switch -->
     <div class="form-group">
       <span class="switch switch-lg">
         <input type="checkbox" class="switch" id="refreshtoggle" checked>
         <label for="refreshtoggle"> Aktualisierung</label>
-      </span> 
+      </span>
     </div>
   </div>
+</div> -->
 
-</div>
-
+  
 
 
   <div class="row">
 
-    <div class="col-12 col-md-11 col-xl-11 leftinformationtable">
-      <ul id="playerlist" class="playerlist">
-      <?php echo $insertLIString; ?>
-      </ul>
-    </div>
-
-    <div class="col-12 col-md-1 col-xl-1 darts" style="margin-left:-0.5rem;"> <!--style="width:3.3333%;-->
+    <div class="col-12 col-md-1 col-xl-1 darts" style="margin-left:15px; width:40px;"> <!--style="width:3.3333%;-->
       <img id="dart1" src="include/img/dart-icon-white.png" <?php echo $showDart1;?>></img>
       <img id="dart2" src="include/img/dart-icon-white.png" <?php echo $showDart2;?>></img>
       <img id="dart3" src="include/img/dart-icon-white.png" <?php echo $showDart3;?>></img>
+      <button id="togglefullscreen" type="button" class="btn btn-primary" width="40px" style="position:absolute; top:170px; left:5px" ><i class="fa-duotone fa-expand fa-lg" aria-hidden="true"></i></button>
+      <button id="showstats"        type="button" class="btn btn-primary" width="40px" style="position:absolute; top:220px; left:5px" ><i class="fa-duotone fa-chart-line fa-lg"></i></button>
     </div>
 
+    <div class="col-12 col-md-11 col-xl-11 leftinformationtable">
+        <ul id="playerlist" class="playerlist">
+            <?php echo $insertLIString1; ?>
+        </ul>
+    </div>
   </div>
 
   <div class="row">
     <div class="col-12">
-    <p id="lastupdated" style="color:white; margin-bottom: -1em; margin-left:0.6em">Updated: <?php echo $lastUpdateTimeRelative;?></p>
+    <p id="lastupdated" style="color:white; position:absolute; bottom:1px; left:5px ">Updated: <?php echo $lastUpdateTimeRelative;?></p>
     </div>
   </div>
-
 
   <!---Modal -->
   <div id="modal" class="modal" tabindex="-1">
@@ -225,6 +343,17 @@ if($gameData != ""){
     <script type="text/javascript" src="include/js/fontawesome6.all.min.js"></script>
     <script type="text/javascript" src="include/js/notification.1.0.1.js"></script>
     <script type="text/javascript" src="include/js/monitoring.js?v=<?php echo $version;?>"></script>
+
+<script>
+function updateScreenWidth() {
+    document.getElementById('widthValue').innerText = window.innerWidth;
+}
+
+// Update screen width on load and on resize
+window.onload = updateScreenWidth;
+window.onresize = updateScreenWidth;
+</script>
+
 
   </body>
 </html>    
